@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/pages/home.dart';
 import 'package:myapp/pages/login_page.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp/utils/routes.dart';
 
 void main() {
   runApp(myapp());
@@ -17,14 +18,15 @@ class myapp extends StatelessWidget {
         primarySwatch: Colors.deepPurple,
         fontFamily: GoogleFonts.lato().fontFamily,
       ),
+      // debugShowCheckedModeBanner: false,
       darkTheme: ThemeData(
         brightness: Brightness.dark,
       ),
       initialRoute: "/",
       routes: {
         "/": (context) => LoginPage(),
-        "/home": (context) => HomePage(),
-      "/login": (context) => LoginPage(),
+        MyRoutes.HomeRoute: (context) => HomePage(),
+      MyRoutes.loginRoute: (context) => LoginPage(),
       }
     );
   }
