@@ -1,38 +1,13 @@
-// ignore_for_file: unnecessary_string_escapes
-
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/mainbody.dart';
-import 'package:myapp/widgets/drawer.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-import '_carousel.dart';
-
-class HomePage extends StatelessWidget {
-  var callbackFunction;
+class Carousel extends StatelessWidget {
+  get callbackFunction => null;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Catalog App"),
-      ),
-      body: Column(
-        children: [
-          Container(
-              // child: Text("Lets get Started"),
-              ),
-          FirstCarousel()
-        ],
-      ),
-      drawer: MyDrawer(),
-    );
-  }
-
-  _carousel() {
     return ListView(children: <Widget>[
-      SizedBox(
-        height: 15.0,
-      ),
+      SizedBox(height: 15.0,),
       CarouselSlider(
         options: CarouselOptions(
           height: 180.0,
@@ -52,10 +27,14 @@ class HomePage extends StatelessWidget {
         items: [
           Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
-                image: DecorationImage(
-                    image: AssetImage("assets\images\1639112487.webp"),
-                    fit: BoxFit.cover)),
+              borderRadius: BorderRadius
+              .circular(10.0),
+              image: DecorationImage(
+                image: AssetImage(
+                  "assets\images\1639112487.webp"),
+                fit: BoxFit.cover
+              )
+            ),
           )
         ],
       ),
