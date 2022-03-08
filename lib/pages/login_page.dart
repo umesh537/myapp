@@ -10,12 +10,13 @@ class LoginPage extends StatelessWidget {
   moveToHome(BuildContext context) async {
     if (_formKey.currentState!.validate()) {
       setState(() {
+        
         changeButton = true;
       });
       await Future.delayed(Duration(seconds: 1));
       await Navigator.pushNamed(context, MyRoutes.HomeRoute);
       setState(() {
-        changeButton = false;
+        changeButton = false; 
       });
     }
   }

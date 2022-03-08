@@ -37,6 +37,19 @@ class MyDrawer extends StatelessWidget {
             ),
             ListTile(
               leading: Icon(
+                Icons.local_offer_rounded,
+                color: Colors.white,
+              ),
+              title: Text(
+                "Offers",
+                textScaleFactor: 1.3,
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(
                 CupertinoIcons.pencil_circle,
                 color: Colors.white,
               ),
@@ -54,7 +67,7 @@ class MyDrawer extends StatelessWidget {
                 color: Colors.white,
               ),
               title: Text(
-                "Profile",
+                "My Account",
                 textScaleFactor: 1.3,
                 style: TextStyle(
                   color: Colors.white,
@@ -81,6 +94,19 @@ class MyDrawer extends StatelessWidget {
               ),
               title: Text(
                 "Settings",
+                textScaleFactor: 1.3,
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.logout,
+                color: Colors.white,
+              ),
+              title: Text(
+                "Logout",
                 textScaleFactor: 1.3,
                 style: TextStyle(
                   color: Colors.white,

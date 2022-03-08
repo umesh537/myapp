@@ -33,19 +33,24 @@ class FirstCarousel extends StatelessWidget {
       Align(
           alignment: Alignment.bottomCenter,
           child: Container(
+            
             height: 100,
-            margin: EdgeInsets.only(left: 30, right: 30, bottom: 10),
+            margin: EdgeInsets.only(left: 30, right: 30, bottom: 20),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
-              color: Colors.white,
+              color: Color.fromARGB(255, 244, 255, 142),
             ),
             child: Container(
               padding: EdgeInsets.only(top: 10, left: 15, right: 15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Title of the picture",
-                  style: TextStyle(fontSize: 20),),
+                  Center(
+                    child: Text(
+                      "Title of the picture",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ),
                   SizedBox(
                     height: 10,
                   ),
@@ -56,22 +61,41 @@ class FirstCarousel extends StatelessWidget {
                             5,
                             (index) => Icon(
                                   Icons.star,
-                                  color: Colors.green,
+                                  color: Color.fromARGB(255, 44, 185, 49),
                                   size: 16,
                                 )),
                       ),
-                      SizedBox(width: 10,),
-                      Text("4.5",
-                      style: TextStyle(fontSize: 16),
+                      SizedBox(
+                        width: 10,
                       ),
-                      SizedBox(width: 10,),
-                      Text("1287",
-                      style: TextStyle(fontSize: 16),
+                      Text(
+                        "4.5",
+                        style: TextStyle(fontSize: 16),
                       ),
-                      SizedBox(width: 10,),
-                      Text("comments",
-                      style: TextStyle(fontSize: 16),
+                      SizedBox(
+                        width: 10,
                       ),
+                      Text(
+                        "1287",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        "comments",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        "Rs-500",
+                        style: TextStyle(
+                            // color: Colors.blue,
+                            fontSize: 18),
+                      )
                     ],
                   )
                 ],
