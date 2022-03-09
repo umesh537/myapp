@@ -11,6 +11,7 @@ import 'header.dart';
 class HomePage extends StatelessWidget {
   var callbackFunction;
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,9 +24,10 @@ class HomePage extends StatelessWidget {
           Container(
               // child: Text("Lets get Started"),
               ),
-          FirstCarousel()
+          FirstCarousel(),
         ],
       ),
+      
       drawer: MyDrawer(),
     );
   }

@@ -10,13 +10,12 @@ class LoginPage extends StatelessWidget {
   moveToHome(BuildContext context) async {
     if (_formKey.currentState!.validate()) {
       setState(() {
-        
         changeButton = true;
       });
       await Future.delayed(Duration(seconds: 1));
       await Navigator.pushNamed(context, MyRoutes.HomeRoute);
       setState(() {
-        changeButton = false; 
+        changeButton = false;
       });
     }
   }
@@ -32,17 +31,18 @@ class LoginPage extends StatelessWidget {
           child: Column(
             children: [
               Image.asset(
-                "assets/images/student.png",
+                "assets/images/20945597.jpg",
                 fit: BoxFit.cover,
                 height: 300,
               ),
               SizedBox(
                 height: 20.0,
               ),
-              Text("Welcome",
+              Text("Welcome to Login Page",
                   style: TextStyle(
                     fontSize: 26,
                     fontWeight: FontWeight.bold,
+                    color: Colors.purple
                   )),
               SizedBox(
                 height: 20.0,
@@ -54,14 +54,16 @@ class LoginPage extends StatelessWidget {
                     children: [
                       TextFormField(
                         decoration: InputDecoration(
-                          hintText: "Enter username",
-                          labelText: "Username",
+                            hintText: "Enter username",
+                            labelText: "Username",
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(50),
+                            )
                         ),
                         validator: (value) {
                           if (value != null && value.isEmpty) {
                             return "Username cannot be empty";
                           }
-
                           return null;
                         },
                         onChanged: (value) {
@@ -69,36 +71,45 @@ class LoginPage extends StatelessWidget {
                           setState(() {});
                         },
                       ),
-                      TextFormField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          hintText: "Enter password",
-                          labelText: "Password",
-                        ),
-                        validator: (value) {
-                          if (value != null && value.isEmpty) {
-                            return "Password cannot be empty";
-                          } else if (value!.length < 6) {
-                            return "Password length should be atleast 6";
-                          }
+                      Padding(
+                        padding: const EdgeInsets.only(top: 12),
+                        child: TextFormField(
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            hintText: "Enter password",
+                            labelText: "Password",
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(50),
+                              )
+                          ),
+                          validator: (value) {
+                            if (value != null && value.isEmpty) {
+                              return "Password cannot be empty";
+                            } else if (value!.length < 6) {
+                              return "Password length should be atleast 6";
+                            }
 
-                          return null;
-                        },
+                            return null;
+                          },
+                        ),
                       ),
                       SizedBox(
                         height: 40.0,
                       ),
                       Material(
-                        color: Colors.deepPurple,
-                        borderRadius:
-                            BorderRadius.circular(changeButton ? 50 : 8),
+                        color: Colors.purple,
+                        // borderRadius:
+                        //     BorderRadius.circular(changeButton ? 50 : 8),
+                        borderRadius: BorderRadius.circular(50),
                         child: InkWell(
                           onTap: () => moveToHome(context),
                           child: AnimatedContainer(
                             duration: Duration(seconds: 1),
-                            width: changeButton ? 50 : 150,
-                            height: 50,
+                            // width: changeButton ? 50 : 150,
+                            width: double.infinity,
+                            height: 60,
                             alignment: Alignment.center,
+
                             child: changeButton
                                 ? Icon(
                                     Icons.done,
