@@ -34,12 +34,17 @@ class SignUpPage extends StatelessWidget {
           height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
-              Container(
-                height: MediaQuery.of(context).size.height / 2.5,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                  image: AssetImage("assets/images/Wavy_Gen-01_Single-07.jpg"),
-                )),
+              // Container(
+              //   height: MediaQuery.of(context).size.height / 2.5,
+              //   decoration: BoxDecoration(
+              //       image: DecorationImage(
+              //     image: AssetImage("assets/images/Wavy_Gen-01_Single-07.jpg"),
+              //   )),
+              // ),
+              Image.asset(
+                "assets/images/Wavy_Gen-01_Single-07.jpg",
+                fit: BoxFit.cover,
+                height: 300,
               ),
               Column(
                 children: [
@@ -52,7 +57,9 @@ class SignUpPage extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(
                     vertical: 16.0, horizontal: 32.0),

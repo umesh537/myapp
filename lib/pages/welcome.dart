@@ -22,24 +22,36 @@ class WelcomePage extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  Text(
-                    "Welcome",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
-                        color: Colors.purple),
+                  Column(
+                    children: [
+                      Image.asset(
+                        "assets/images/cropped-sp-graphics-white-1024x613.png",
+                        fit: BoxFit.contain,
+                        height: 80,
+                      ),
+                      SizedBox(height: 4,),
+                      Text(
+                        "Welcome To SPGraphics",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 30,
+                            color: Colors.purple),
+                      ),
+                      SizedBox(height: 4,),
+                      
+                    ],
                   ),
                   SizedBox(
                     height: 20,
                   ),
-                  Text(
-                    "something for test",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.green[700],
-                      fontSize: 18,
-                    ),
-                  )
+                  // Text(
+                  //   "something for test",
+                  //   textAlign: TextAlign.center,
+                  //   style: TextStyle(
+                  //     color: Colors.green[700],
+                  //     fontSize: 18,
+                  //   ),
+                  // )
                 ],
               ),
               Container(
