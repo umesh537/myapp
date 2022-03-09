@@ -4,7 +4,6 @@ import 'package:myapp/utils/routes.dart';
 class LoginPage extends StatelessWidget {
   String name = "";
   bool changeButton = false;
-
   final _formKey = GlobalKey<FormState>();
 
   moveToHome(BuildContext context) async {
@@ -40,10 +39,9 @@ class LoginPage extends StatelessWidget {
               ),
               Text("Welcome to Login Page",
                   style: TextStyle(
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.purple
-                  )),
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.purple)),
               SizedBox(
                 height: 20.0,
               ),
@@ -58,8 +56,7 @@ class LoginPage extends StatelessWidget {
                             labelText: "Username",
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(50),
-                            )
-                        ),
+                            )),
                         validator: (value) {
                           if (value != null && value.isEmpty) {
                             return "Username cannot be empty";
@@ -71,27 +68,26 @@ class LoginPage extends StatelessWidget {
                           setState(() {});
                         },
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 12),
-                        child: TextFormField(
-                          obscureText: true,
-                          decoration: InputDecoration(
+                      SizedBox(
+                        height: 20,
+                      ),
+                      TextFormField(
+                        obscureText: true,
+                        decoration: InputDecoration(
                             hintText: "Enter password",
                             labelText: "Password",
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(50),
-                              )
-                          ),
-                          validator: (value) {
-                            if (value != null && value.isEmpty) {
-                              return "Password cannot be empty";
-                            } else if (value!.length < 6) {
-                              return "Password length should be atleast 6";
-                            }
+                              borderRadius: BorderRadius.circular(50),
+                            )),
+                        validator: (value) {
+                          if (value != null && value.isEmpty) {
+                            return "Password cannot be empty";
+                          } else if (value!.length < 6) {
+                            return "Password length should be atleast 6";
+                          }
 
-                            return null;
-                          },
-                        ),
+                          return null;
+                        },
                       ),
                       SizedBox(
                         height: 40.0,
@@ -109,7 +105,6 @@ class LoginPage extends StatelessWidget {
                             width: double.infinity,
                             height: 60,
                             alignment: Alignment.center,
-
                             child: changeButton
                                 ? Icon(
                                     Icons.done,

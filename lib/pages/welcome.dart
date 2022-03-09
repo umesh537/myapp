@@ -12,7 +12,7 @@ class WelcomePage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
           child: Container(
-            color: Colors.white,
+        color: Colors.white,
         width: double.infinity,
         height: MediaQuery.of(context).size.height,
         padding: EdgeInsets.symmetric(horizontal: 30, vertical: 50),
@@ -25,10 +25,9 @@ class WelcomePage extends StatelessWidget {
                   Text(
                     "Welcome",
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30,
-                      color: Colors.purple
-                    ),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30,
+                        color: Colors.purple),
                   ),
                   SizedBox(
                     height: 20,
