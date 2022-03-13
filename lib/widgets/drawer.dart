@@ -1,8 +1,32 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:myapp/pages/Account.dart';
+import 'package:myapp/pages/Offers.dart';
+import 'package:myapp/pages/about.dart';
+import 'package:myapp/pages/home.dart';
+import 'package:myapp/pages/login_page.dart';
+import 'package:myapp/pages/plans.dart';
+import 'package:myapp/pages/settings.dart';
 import 'package:myapp/utils/routes.dart';
 
 class MyDrawer extends StatelessWidget {
+  // String name = "";
+  // bool changeButton = false;
+  // final _formKey = GlobalKey<FormState>();
+
+  // moveToAbout(BuildContext context) async {
+  //   if (_formKey.currentState!.validate()) {
+  //     setState(() {
+  //       changeButton = true;
+  //     });
+  //     await Future.delayed(Duration(seconds: 1));
+  //     await Navigator.pushNamed(context, MyRoutes.AboutRoute);
+  //     setState(() {
+  //       changeButton = false;
+  //     });
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     final imageUrl =
@@ -23,104 +47,157 @@ class MyDrawer extends StatelessWidget {
                 ),
               ),
             ),
-            ListTile(
-              leading: Icon(
-                CupertinoIcons.home,
-                color: Colors.white,
-              ),
-              title: Text(
-                "Home",
-                textScaleFactor: 1.3,
-                style: TextStyle(
+            TextButton(
+              child: ListTile(
+                leading: Icon(
+                  CupertinoIcons.home,
                   color: Colors.white,
                 ),
+                title: Text(
+                  "Home",
+                  textScaleFactor: 1.3,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
               ),
-              // onTap: () {
-              //   Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //       builder: (context) => MyRoutes.HomeRoute,
-              //     ),
-              //   );
-              // },
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HomePage()));
+              },
             ),
-            ListTile(
-              leading: Icon(
-                Icons.local_offer_rounded,
-                color: Colors.white,
-              ),
-              title: Text(
-                "Offers",
-                textScaleFactor: 1.3,
-                style: TextStyle(
+            TextButton(
+              child: ListTile(
+                leading: Icon(
+                  Icons.local_offer_rounded,
                   color: Colors.white,
                 ),
+                title: Text(
+                  "Offers",
+                  textScaleFactor: 1.3,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
               ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => OffersPage()));
+              },
             ),
-            ListTile(
-              leading: Icon(
-                CupertinoIcons.pencil_circle,
-                color: Colors.white,
-              ),
-              title: Text(
-                "My Plans",
-                textScaleFactor: 1.3,
-                style: TextStyle(
+            TextButton(
+              child: ListTile(
+                leading: Icon(
+                  CupertinoIcons.pencil_circle,
                   color: Colors.white,
                 ),
+                title: Text(
+                  "My Plans",
+                  textScaleFactor: 1.3,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
               ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AllPlans()));
+              },
             ),
-            ListTile(
-              leading: Icon(
-                CupertinoIcons.profile_circled,
-                color: Colors.white,
-              ),
-              title: Text(
-                "My Account",
-                textScaleFactor: 1.3,
-                style: TextStyle(
+            TextButton(
+              child: ListTile(
+                leading: Icon(
+                  CupertinoIcons.profile_circled,
                   color: Colors.white,
                 ),
+                title: Text(
+                  "My Account",
+                  textScaleFactor: 1.3,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
               ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AccountPage()));
+              },
             ),
-            ListTile(
-              leading: Icon(
-                CupertinoIcons.mail,
-                color: Colors.white,
-              ),
-              title: Text(
-                "MailBox",
-                textScaleFactor: 1.3,
-                style: TextStyle(
+            TextButton(
+              child: ListTile(
+                leading: Icon(
+                  CupertinoIcons.mail,
                   color: Colors.white,
                 ),
+                title: Text(
+                  "MailBox",
+                  textScaleFactor: 1.3,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
               ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SettingPage()));
+              },
             ),
-            ListTile(
-              leading: Icon(
-                CupertinoIcons.settings,
-                color: Colors.white,
-              ),
-              title: Text(
-                "Settings",
-                textScaleFactor: 1.3,
-                style: TextStyle(
+            TextButton(
+              child: ListTile(
+                leading: Icon(
+                  CupertinoIcons.settings,
                   color: Colors.white,
                 ),
+                title: Text(
+                  "Settings",
+                  textScaleFactor: 1.3,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
               ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SettingPage()));
+              },
             ),
-            ListTile(
-              leading: Icon(
-                Icons.logout,
-                color: Colors.white,
-              ),
-              title: Text(
-                "Logout",
-                textScaleFactor: 1.3,
-                style: TextStyle(
+            TextButton(
+              child: ListTile(
+                leading: Icon(
+                  CupertinoIcons.person_3_fill,
                   color: Colors.white,
                 ),
+                title: Text(
+                  "About Us",
+                  textScaleFactor: 1.3,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
               ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AboutPage()));
+              },
+            ),
+            TextButton(
+              child: ListTile(
+                leading: Icon(
+                  Icons.logout,
+                  color: Colors.white,
+                ),
+                title: Text(
+                  "Logout",
+                  textScaleFactor: 1.3,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LoginPage()));
+              },
             ),
           ],
         ),

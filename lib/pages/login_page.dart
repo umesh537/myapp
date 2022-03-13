@@ -30,6 +30,11 @@ class LoginPage extends StatelessWidget {
           child: Column(
             children: [
               Image.asset(
+                "assets/images/cropped-sp-graphics-white-1024x613.png",
+                fit: BoxFit.contain,
+                height: 80,
+              ),
+              Image.asset(
                 "assets/images/20945597.jpg",
                 fit: BoxFit.cover,
                 height: 300,

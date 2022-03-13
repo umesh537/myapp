@@ -1,31 +1,12 @@
-// ignore_for_file: unnecessary_string_escapes
-
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/categories.dart';
-import 'package:myapp/pages/login_page.dart';
-import 'package:myapp/pages/mainbody.dart';
-import 'package:myapp/pages/BottomNavigator.dart';
-import 'package:myapp/widgets/drawer.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:myapp/pages/searchbar.dart';
-import '_carousel.dart';
-import 'header.dart';
 
-class HomePage extends StatelessWidget {
-  var callbackFunction;
 
-  int _currentIndex = 0;
-  List<Widget> body = const [
-    Icon(Icons.home),
-    Icon(Icons.person),
-    Icon(Icons.settings),
-  ];
-
+class Searchbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Catalog App"),
+        // title: const Text('BottomNavigationBar Sample'),
         actions: [
           IconButton(
               onPressed: () {
@@ -37,53 +18,14 @@ class HomePage extends StatelessWidget {
               icon: const Icon(Icons.search))
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Header(),
-            Container(
-                // child: Text("Lets get Started"),
-                ),
-            FirstCarousel(),
-            Category(),
-          ],
-        ),
-      ),
-
-      // Bottom Navigation Bar
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (int newIndex) {
-          setState(() {
-            _currentIndex = newIndex;
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(
-            label: 'Home',
-            icon: Icon(Icons.home),
-          ),
-          // BottomNavigationBarItem(label: 'Saved', icon: Icon(Icons.bookmark)),
-          BottomNavigationBarItem(label: 'Profile', icon: Icon(Icons.person)),
-          BottomNavigationBarItem(label: 'Setting', icon: Icon(Icons.settings)),
-        ],
-      ),
-      drawer: MyDrawer(),
     );
   }
 }
 
-// Search Bar
 class CustomSearchDelegate extends SearchDelegate {
   List<String> searchTerms = [
     'Ganesh chaturti',
     'Navratri',
-    'Diwali',
-    'Janmashtmi',
-    'Raksha Bandhan',
-    'Diwali',
-    'Janmashtmi',
-    'Raksha Bandhan',
     'Diwali',
     'Janmashtmi',
     'Raksha Bandhan',
@@ -98,7 +40,6 @@ class CustomSearchDelegate extends SearchDelegate {
           icon: const Icon(Icons.clear))
     ];
   }
-
   @override
   Widget? buildLeading(BuildContext context) {
     return IconButton(
@@ -117,7 +58,6 @@ class CustomSearchDelegate extends SearchDelegate {
       }
     }
     return ListView.builder(
-      itemCount: matchQuery.length,
       itemBuilder: (context, index) {
         var result = matchQuery[index];
         return ListTile(
@@ -136,7 +76,6 @@ class CustomSearchDelegate extends SearchDelegate {
       }
     }
     return ListView.builder(
-      itemCount: matchQuery.length,
       itemBuilder: (context, index) {
         var result = matchQuery[index];
         return ListTile(

@@ -7,10 +7,16 @@ class AllPlans extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dummyList = List.generate(20, (index) => CatalogModel.items[0]);
-    return Container(
-      child: Text(
-        "This is the plans page",
-        style: TextStyle(fontSize: 18),
+    return Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: Container(
+            child: Text(
+              "This is Plans page",
+              style: TextStyle(fontSize: 18),
+            ),
+          ),
+        ),
       ),
     );
   }
