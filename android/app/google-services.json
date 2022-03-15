@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "246042550704",
+    "project_id": "spgraphics-f012a",
+    "storage_bucket": "spgraphics-f012a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246042550704:android:5bea3dc501221907247675",
+        "android_client_info": {
+          "package_name": "com.spgraphics.myapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "246042550704-3cbdg65b54d552s7qo4aep4ajcgd5n8k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyFPlBjAvyexBJL_w_CwzKNhb7FlRciKk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "246042550704-3cbdg65b54d552s7qo4aep4ajcgd5n8k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

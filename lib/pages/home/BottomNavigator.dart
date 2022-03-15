@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/main.dart';
-import 'package:myapp/pages/login_page.dart';
-import 'package:myapp/pages/home.dart';
+import 'package:myapp/pages/Authenticate/login_page.dart';
+import 'package:myapp/pages/home/home.dart';
 
 class BottomNavigation extends StatelessWidget {
   int _currentIndex = 0;

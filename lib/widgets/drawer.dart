@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/Account.dart';
-import 'package:myapp/pages/Offers.dart';
-import 'package:myapp/pages/about.dart';
-import 'package:myapp/pages/home.dart';
-import 'package:myapp/pages/login_page.dart';
-import 'package:myapp/pages/plans.dart';
-import 'package:myapp/pages/settings.dart';
+import 'package:myapp/pages/sidebar/Account.dart';
+import 'package:myapp/pages/sidebar/Offers.dart';
+import 'package:myapp/pages/sidebar/about.dart';
+import 'package:myapp/pages/home/home.dart';
+import 'package:myapp/pages/Authenticate/login_page.dart';
+import 'package:myapp/pages/sidebar/plans.dart';
+import 'package:myapp/pages/sidebar/settings.dart';
 import 'package:myapp/utils/routes.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -180,24 +180,19 @@ class MyDrawer extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => AboutPage()));
               },
             ),
-            TextButton(
-              child: ListTile(
-                leading: Icon(
-                  Icons.logout,
+            ListTile(
+              leading: Icon(
+                Icons.logout,
+                color: Colors.white,
+              ),
+              title: Text(
+                "Logout",
+                textScaleFactor: 1.3,
+                style: TextStyle(
                   color: Colors.white,
                 ),
-                title: Text(
-                  "Logout",
-                  textScaleFactor: 1.3,
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
+                
               ),
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => LoginPage()));
-              },
             ),
           ],
         ),

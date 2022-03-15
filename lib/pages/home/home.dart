@@ -1,15 +1,15 @@
 // ignore_for_file: unnecessary_string_escapes
 
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/categories.dart';
-import 'package:myapp/pages/login_page.dart';
-import 'package:myapp/pages/mainbody.dart';
-import 'package:myapp/pages/BottomNavigator.dart';
+import 'package:myapp/pages/home/categories.dart';
+import 'package:myapp/pages/Authenticate/login_page.dart';
+import 'package:myapp/pages/home/mainbody.dart';
+import 'package:myapp/pages/home/BottomNavigator.dart';
 import 'package:myapp/widgets/drawer.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:myapp/pages/searchbar.dart';
-import '_carousel.dart';
-import 'header.dart';
+import 'package:myapp/pages/home/searchbar.dart';
+import 'package:myapp/pages/home/_carousel.dart';
+import 'package:myapp/pages/home/header.dart';
 
 class HomePage extends StatelessWidget {
   var callbackFunction;

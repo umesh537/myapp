@@ -1,10 +1,9 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/Register.dart';
-import 'package:myapp/pages/login_page.dart';
-import 'mainbody.dart';
-import 'home.dart';
+import 'package:myapp/pages/Authenticate/Register.dart';
+import 'package:myapp/pages/Authenticate/login_page.dart';
+import 'package:myapp/pages/home/mainbody.dart';
+import 'package:myapp/pages/home/home.dart';
 
 class WelcomePage extends StatelessWidget {
   @override
