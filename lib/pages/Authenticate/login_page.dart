@@ -1,6 +1,7 @@
 import 'dart:ffi';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:myapp/pages/Authenticate/Register.dart';
 import 'package:myapp/pages/home/home.dart';
 import 'package:myapp/services/auth.dart';
@@ -20,6 +21,9 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
 
+  // firebase
+  final _auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     //email field
@@ -27,7 +31,16 @@ class _LoginPageState extends State<LoginPage> {
       autofocus: false,
       controller: emailController,
       keyboardType: TextInputType.emailAddress,
-      // validator: () {},
+      validator: (value) {
+        if (value!.isEmpty) {
+          return ("Please Enter Your Email");
+        }
+        // reg expression for email verification
+        if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]").hasMatch(value)) {
+          return ("Please Enter a valid email");
+        }
+        return null;
+      },
       onSaved: (value) {
         emailController.text = value!;
       },
@@ -47,8 +60,15 @@ class _LoginPageState extends State<LoginPage> {
       autofocus: false,
       controller: passwordController,
       obscureText: true,
-
-      // validator: () {},
+      validator: (value) {
+        RegExp regex = new RegExp(r'^.{6,}$');
+        if (value!.isEmpty) {
+          return ("Password is required for login");
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Enter Valid Password(Min. 6 Character)");
+        }
+      },
       onSaved: (value) {
         passwordController.text = value!;
       },
@@ -73,8 +93,9 @@ class _LoginPageState extends State<LoginPage> {
         minWidth: double.infinity,
         height: 60,
         onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => HomePage()));
+          signIn(emailController.text, passwordController.text);
+          // Navigator.push(
+          //     context, MaterialPageRoute(builder: (context) => HomePage()));
         },
         child: Text(
           "Login",
@@ -160,6 +181,22 @@ class _LoginPageState extends State<LoginPage> {
         )),
       ),
     );
+  }
+
+  // login function
+  void signIn(String email, String password) async {
+    if (_formKey.currentState!.validate()) {
+      await _auth
+          .signInWithEmailAndPassword(email: email, password: password)
+          .then((uid) => {
+                Fluttertoast.showToast(msg: "Login Successful"),
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => HomePage())),
+              })
+          .catchError((e) {
+        Fluttertoast.showToast(msg: e!.message);
+      });
+    }
   }
 }
 
