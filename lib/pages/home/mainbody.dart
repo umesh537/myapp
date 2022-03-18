@@ -33,7 +33,6 @@ class FirstCarousel extends StatelessWidget {
       Align(
           alignment: Alignment.bottomCenter,
           child: Container(
-            
             height: 100,
             margin: EdgeInsets.only(left: 30, right: 30, bottom: 20),
             decoration: BoxDecoration(

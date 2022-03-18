@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:myapp/models/user.dart';
 import 'package:myapp/pages/sidebar/Account.dart';
 import 'package:myapp/pages/sidebar/Offers.dart';
 import 'package:myapp/pages/sidebar/about.dart';
@@ -9,23 +12,29 @@ import 'package:myapp/pages/sidebar/plans.dart';
 import 'package:myapp/pages/sidebar/settings.dart';
 import 'package:myapp/utils/routes.dart';
 
-class MyDrawer extends StatelessWidget {
-  // String name = "";
-  // bool changeButton = false;
-  // final _formKey = GlobalKey<FormState>();
+class MyDrawer extends StatefulWidget {
+  const MyDrawer({Key? key}) : super(key: key);
 
-  // moveToAbout(BuildContext context) async {
-  //   if (_formKey.currentState!.validate()) {
-  //     setState(() {
-  //       changeButton = true;
-  //     });
-  //     await Future.delayed(Duration(seconds: 1));
-  //     await Navigator.pushNamed(context, MyRoutes.AboutRoute);
-  //     setState(() {
-  //       changeButton = false;
-  //     });
-  //   }
-  // }
+  @override
+  State<MyDrawer> createState() => _MyDrawerState();
+}
+
+class _MyDrawerState extends State<MyDrawer> {
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loggedInUser = UserModel();
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .get()
+        .then((value) {
+      this.loggedInUser = UserModel.fromMap(value.data());
+      setState(() {});
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,13 +47,18 @@ class MyDrawer extends StatelessWidget {
           children: [
             DrawerHeader(
               padding: EdgeInsets.zero,
-              child: UserAccountsDrawerHeader(
-                margin: EdgeInsets.zero,
-                accountName: Text("Umesh Suryavanshi"),
-                accountEmail: Text("abc@gmail.com"),
-                currentAccountPicture: CircleAvatar(
-                  backgroundImage: NetworkImage(imageUrl),
-                ),
+              child: Builder(
+                builder: (context) {
+                  return UserAccountsDrawerHeader(
+                    margin: EdgeInsets.zero,
+                    accountName:
+                        Text("${loggedInUser.firstName} ${loggedInUser.lastName}"),
+                    accountEmail: Text("${loggedInUser.email}"),
+                    currentAccountPicture: CircleAvatar(
+                      backgroundImage: NetworkImage(imageUrl),
+                    ),
+                  );
+                }
               ),
             ),
             TextButton(
@@ -191,12 +205,20 @@ class MyDrawer extends StatelessWidget {
                 style: TextStyle(
                   color: Colors.white,
                 ),
-                
               ),
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => LoginPage())),
             ),
           ],
         ),
       ),
     );
   }
+
+  // the logout function
+  // Future<void> logout(BuildContext context) async {
+  //   await FirebaseAuth.instance.signOut();
+  //   Navigator.of(context)
+  //       .pushReplacement(MaterialPageRoute(builder: (context) => LoginPage()));
+  // }
 }

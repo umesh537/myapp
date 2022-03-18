@@ -1,8 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:myapp/models/user.dart';
 import 'package:myapp/pages/home/header.dart';
 import 'package:myapp/pages/Authenticate/login_page.dart';
+import 'package:myapp/pages/home/home.dart';
 import 'package:myapp/utils/routes.dart';
 import 'package:myapp/widgets/drawer.dart';
+import 'package:myapp/pages/Authenticate/Register.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -12,6 +18,7 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  final _auth = FirebaseAuth.instance;
   // Our form key
   final _formKey = GlobalKey<FormState>();
 
@@ -30,7 +37,16 @@ class _SignUpPageState extends State<SignUpPage> {
       autofocus: false,
       controller: firstNameEditingController,
       keyboardType: TextInputType.name,
-      // validator: () {},
+      validator: (value) {
+        RegExp regex = new RegExp(r'^.{3,}$');
+        if (value!.isEmpty) {
+          return ("First Name cannot be Empty!");
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Enter Valid Name(Min. 3 Character)");
+        }
+        return null;
+      },
       onSaved: (value) {
         firstNameEditingController.text = value!;
       },
@@ -50,7 +66,13 @@ class _SignUpPageState extends State<SignUpPage> {
       autofocus: false,
       controller: lastNameEditingController,
       keyboardType: TextInputType.name,
-      // validator: () {},
+      validator: (value) {
+        RegExp regex = new RegExp(r'^.{3,}$');
+        if (value!.isEmpty) {
+          return ("Last Name cannot be Empty!");
+        }
+        return null;
+      },
       onSaved: (value) {
         lastNameEditingController.text = value!;
       },
@@ -70,7 +92,16 @@ class _SignUpPageState extends State<SignUpPage> {
       autofocus: false,
       controller: emailEditingController,
       keyboardType: TextInputType.emailAddress,
-      // validator: () {},
+      validator: (value) {
+        if (value!.isEmpty) {
+          return ("Please Enter Your Email");
+        }
+        // reg expression for email verification
+        if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]").hasMatch(value)) {
+          return ("Please Enter a valid email");
+        }
+        return null;
+      },
       onSaved: (value) {
         emailEditingController.text = value!;
       },
@@ -90,7 +121,15 @@ class _SignUpPageState extends State<SignUpPage> {
       autofocus: false,
       controller: numberEditingController,
       keyboardType: TextInputType.number,
-      // validator: () {},
+      validator: (value) {
+        RegExp regExp = new RegExp(r'(^(?:[+0]9)?[0-9]{10,12}$)');
+        if (value?.length == 0) {
+          return 'Please enter mobile number';
+        } else if (!regExp.hasMatch(value!)) {
+          return 'Please enter valid mobile number';
+        }
+        return null;
+      },
       onSaved: (value) {
         numberEditingController.text = value!;
       },
@@ -110,7 +149,15 @@ class _SignUpPageState extends State<SignUpPage> {
       autofocus: false,
       controller: passwordEditingController,
       keyboardType: TextInputType.visiblePassword,
-      // validator: () {},
+      validator: (value) {
+        RegExp regex = new RegExp(r'^.{6,}$');
+        if (value!.isEmpty) {
+          return ("Password is required for login");
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Enter Valid Password(Min. 6 Character)");
+        }
+      },
       onSaved: (value) {
         passwordEditingController.text = value!;
       },
@@ -130,7 +177,13 @@ class _SignUpPageState extends State<SignUpPage> {
       autofocus: false,
       controller: confirmPasswordEditingController,
       obscureText: true,
-      // validator: () {},
+      validator: (value) {
+        if (confirmPasswordEditingController.text !=
+            passwordEditingController.text) {
+          return "Password don't match";
+        }
+        return null;
+      },
       onSaved: (value) {
         confirmPasswordEditingController.text = value!;
       },
@@ -153,7 +206,9 @@ class _SignUpPageState extends State<SignUpPage> {
       child: MaterialButton(
           padding: EdgeInsets.fromLTRB(30, 20, 30, 20),
           minWidth: MediaQuery.of(context).size.width,
-          onPressed: () {},
+          onPressed: () {
+            signUp(emailEditingController.text, passwordEditingController.text);
+          },
           child: Text(
             "SignUp",
             textAlign: TextAlign.center,
@@ -172,10 +227,9 @@ class _SignUpPageState extends State<SignUpPage> {
               Navigator.of(context).pop();
             },
             icon: Icon(
-              Icons.arrow_back, 
+              Icons.arrow_back,
               color: Colors.purple,
-            )
-        ),
+            )),
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -224,6 +278,72 @@ class _SignUpPageState extends State<SignUpPage> {
         )),
       ),
     );
+  }
+
+  void signUp(String email, String password) async {
+    if (_formKey.currentState!.validate()) {
+      try {
+        await _auth
+            .createUserWithEmailAndPassword(email: email, password: password)
+            .then((value) => {postDetailsToFirestore()})
+            .catchError((e) {
+          Fluttertoast.showToast(msg: e!.message);
+        });
+      } on FirebaseAuthException catch (error) {
+        var errorMessage;
+        switch (error.code) {
+          case "invalid-email":
+            errorMessage = "Your email address appears to be malformed.";
+            break;
+          case "wrong-password":
+            errorMessage = "Your password is wrong.";
+            break;
+          case "user-not-found":
+            errorMessage = "User with this email doesn't exist.";
+            break;
+          case "user-disabled":
+            errorMessage = "User with this email has been disabled.";
+            break;
+          case "too-many-requests":
+            errorMessage = "Too many requests";
+            break;
+          case "operation-not-allowed":
+            errorMessage = "Signing in with Email and Password is not enabled.";
+            break;
+          default:
+            errorMessage = "An undefined Error happened.";
+        }
+        Fluttertoast.showToast(msg: errorMessage!);
+        print(error.code);
+      }
+    }
+  }
+
+  postDetailsToFirestore() async {
+    // calling our firestore
+    // calling our user model
+    // sedning these values
+
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    User? user = _auth.currentUser;
+
+    UserModel userModel = UserModel();
+
+    // writing all the values
+    userModel.email = user!.email;
+    userModel.uid = user.uid;
+    userModel.firstName = firstNameEditingController.text;
+    userModel.lastName = lastNameEditingController.text;
+    userModel.number = numberEditingController.text;
+
+    await firebaseFirestore
+        .collection("users")
+        .doc(user.uid)
+        .set(userModel.toMap());
+    Fluttertoast.showToast(msg: "Account created successfully :) ");
+
+    Navigator.pushAndRemoveUntil((context),
+        MaterialPageRoute(builder: (context) => HomePage()), (route) => false);
   }
 }
 
