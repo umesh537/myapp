@@ -3,6 +3,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 
 class FirstCarousel extends StatelessWidget {
   PageController pageController = PageController(viewportFraction: 0.85);
+
+  
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -11,7 +11,7 @@ class UserModel {
   factory UserModel.fromMap(map) {
     return UserModel(
       uid: map['uid'],
-      email: map['email'],
+      email: map['email'], 
       firstName: map['firstName'],
       lastName: map['lastName'],
       number: map['number'],

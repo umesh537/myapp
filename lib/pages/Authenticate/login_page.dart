@@ -1,7 +1,10 @@
 import 'dart:ffi';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_signin_button/button_list.dart';
+import 'package:flutter_signin_button/button_view.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:myapp/pages/Authenticate/Register.dart';
 import 'package:myapp/pages/home/home.dart';
 import 'package:myapp/services/auth.dart';
@@ -23,6 +26,9 @@ class _LoginPageState extends State<LoginPage> {
 
   // firebase
   final _auth = FirebaseAuth.instance;
+
+  // goggle signup buton
+  GoogleSignIn googleAuth = new GoogleSignIn();
 
   @override
   Widget build(BuildContext context) {
@@ -146,13 +152,20 @@ class _LoginPageState extends State<LoginPage> {
                         fit: BoxFit.cover,
                       ),
                     ),
-                    SizedBox(height: 30),
+                    SizedBox(height: 10),
                     emailField,
                     SizedBox(height: 20),
                     passwordField,
                     SizedBox(height: 20),
                     loginButton,
                     SizedBox(height: 15),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SignInButton(Buttons.Google, onPressed: () {}),
+                        // SignInButton(Buttons.Facebook,mini: true, onPressed: (){})
+                      ],
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -200,7 +213,6 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
-// class LoginPage extends StatelessWidget {
 //   String name = "";
 //   bool changeButton = false;
 //   // form key
