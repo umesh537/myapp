@@ -9,6 +9,7 @@ import 'package:myapp/pages/sidebar/about.dart';
 import 'package:myapp/pages/home/home.dart';
 import 'package:myapp/pages/Authenticate/login_page.dart';
 import 'package:myapp/pages/sidebar/plans.dart';
+import 'package:myapp/pages/sidebar/services.dart';
 import 'package:myapp/pages/sidebar/settings.dart';
 import 'package:myapp/utils/routes.dart';
 
@@ -144,7 +145,7 @@ class _MyDrawerState extends State<MyDrawer> {
                   color: Colors.white,
                 ),
                 title: Text(
-                  "MailBox",
+                  "Services",
                   textScaleFactor: 1.3,
                   style: TextStyle(
                     color: Colors.white,
@@ -153,7 +154,7 @@ class _MyDrawerState extends State<MyDrawer> {
               ),
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SettingPage()));
+                    MaterialPageRoute(builder: (context) => ServicesPage()));
               },
             ),
             TextButton(

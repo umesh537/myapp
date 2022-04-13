@@ -9,6 +9,8 @@ class MyRoutes {
   static String PlansRoute = "/plans";
   static String OfferRoute = "/offer";
   static String SettingsRoute = "/settings";
+  static String goodThoughtRoute = "/goodthought";
+  static String ServiceRoute = "/services";
   
   
 }

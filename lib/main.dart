@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:myapp/pages/festivals/festival_images.dart';
+import 'package:myapp/pages/good_thought/good_thoughts.dart';
 import 'package:myapp/pages/sidebar/Account.dart';
 import 'package:myapp/pages/sidebar/Offers.dart';
 import 'package:myapp/pages/Authenticate/Register.dart';
@@ -7,6 +9,7 @@ import 'package:myapp/pages/sidebar/about.dart';
 import 'package:myapp/pages/home/home.dart';
 import 'package:myapp/pages/Authenticate/login_page.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp/pages/sidebar/services.dart';
 import 'package:myapp/pages/sidebar/settings.dart';
 import 'package:myapp/pages/welcome.dart';
 import 'package:myapp/utils/routes.dart';
@@ -38,6 +41,12 @@ class myapp extends StatelessWidget {
           MyRoutes.OfferRoute: (context) => OffersPage(),
           MyRoutes.SettingsRoute: (context) => SettingPage(),
           MyRoutes.AccountRoute: (context) => AccountPage(),
+          MyRoutes.AccountRoute:(context) => ThoughtPage(),
+          MyRoutes.AccountRoute:(context) => FestivalPage(),
+          MyRoutes.AccountRoute:(context) => ServicesPage()
+
         });
   }
 }
+
+
