@@ -14,6 +14,7 @@ import 'package:myapp/pages/sidebar/settings.dart';
 import 'package:myapp/pages/welcome.dart';
 import 'package:myapp/utils/routes.dart';
 import 'package:myapp/widgets/themes.dart';
+import 'package:myapp/pages/festivals/image.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,6 +31,7 @@ class myapp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         darkTheme: MyTheme.darkTheme(context),
         initialRoute: MyRoutes.HomeRoute,
+        // initialRoute: MyRoutes.ImagesRoute,
         // initialRoute: MyRoutes.WelcomeRoute,
         routes: {
           "/": (context) => LoginPage(),
@@ -41,9 +43,10 @@ class myapp extends StatelessWidget {
           MyRoutes.OfferRoute: (context) => OffersPage(),
           MyRoutes.SettingsRoute: (context) => SettingPage(),
           MyRoutes.AccountRoute: (context) => AccountPage(),
-          MyRoutes.AccountRoute:(context) => ThoughtPage(),
-          MyRoutes.AccountRoute:(context) => FestivalPage(),
-          MyRoutes.AccountRoute:(context) => ServicesPage()
+          MyRoutes.goodThoughtRoute:(context) => ThoughtPage(),
+          MyRoutes.FestivalRoute:(context) => FestivalPage(),
+          MyRoutes.ServiceRoute:(context) => ServicesPage(),
+          MyRoutes.ImagesRoute:(context) => ImageData(),
 
         });
   }

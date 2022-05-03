@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/models/user.dart';
+import 'package:myapp/pages/festivals/festival_images.dart';
+import 'package:myapp/pages/festivals/imagedata.dart';
 import 'package:myapp/pages/sidebar/Account.dart';
 import 'package:myapp/pages/sidebar/Offers.dart';
 import 'package:myapp/pages/sidebar/about.dart';
@@ -12,6 +14,7 @@ import 'package:myapp/pages/sidebar/plans.dart';
 import 'package:myapp/pages/sidebar/services.dart';
 import 'package:myapp/pages/sidebar/settings.dart';
 import 'package:myapp/utils/routes.dart';
+import '../pages/festivals/image.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({Key? key}) : super(key: key);
@@ -97,7 +100,46 @@ class _MyDrawerState extends State<MyDrawer> {
               ),
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => OffersPage()));
+                    // MaterialPageRoute(builder: (context) => OffersPage()));
+                    MaterialPageRoute(builder: (context) => Images()));
+              },
+            ),
+            TextButton(
+              child: ListTile(
+                leading: Icon(
+                  Icons.local_offer_rounded,
+                  color: Colors.white,
+                ),
+                title: Text(
+                  "Festival Page",
+                  textScaleFactor: 1.3,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => FestivalPage()));
+              },
+            ),
+            TextButton(
+              child: ListTile(
+                leading: Icon(
+                  Icons.local_offer_rounded,
+                  color: Colors.white,
+                ),
+                title: Text(
+                  "Images Page",
+                  textScaleFactor: 1.3,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ImageData()));
               },
             ),
             TextButton(

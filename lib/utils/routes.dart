@@ -11,6 +11,9 @@ class MyRoutes {
   static String SettingsRoute = "/settings";
   static String goodThoughtRoute = "/goodthought";
   static String ServiceRoute = "/services";
+  static String FestivalRoute = "/festival";
+  static String ImagesRoute = "/images";
+
   
   
 }
